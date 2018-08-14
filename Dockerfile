@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore-build AS builder
+FROM microsoft/aspnetcore-build:2
 WORKDIR /app
 
 # caches restore result by copying csproj file separately
@@ -13,7 +13,7 @@ RUN if [ ! -s __assemblyname ]; then filename=$(ls *.csproj); echo ${filename%.*
 # Stage 2
 FROM microsoft/aspnetcore:2
 WORKDIR /app
-COPY --from=builder /app .
+COPY --from=0 /app .
 
 ENV PORT 80
 EXPOSE 80
