@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore-build:2 AS builder
+FROM microsoft/aspnetcore-build:2 as builder
 WORKDIR /app
 
 # caches restore result by copying csproj file separately
